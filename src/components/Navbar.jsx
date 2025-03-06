@@ -8,9 +8,10 @@ import {
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContextArea } from "../context/AuthContext";
+import avatar from "../assets/icons/avatar.png";
 
 export default function Navbar() {
-  const { logOut } = useContext(AuthContextArea);
+  const { logOut, currentUser } = useContext(AuthContextArea);
 
   return (
     <Disclosure as="nav" className="bg-[#080705]">
@@ -21,7 +22,7 @@ export default function Navbar() {
           </Link>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <h5 className="mr-2 capitalize text-[#5A0A09] font-bold">
-              Dzelal Velislav Sokolovic
+              {currentUser?.displayName}
             </h5>
             {/* Profile dropdown */}
             <Menu as="div" className="relative ml-3">
@@ -31,7 +32,7 @@ export default function Navbar() {
                   <span className="sr-only">Open user menu</span>
                   <img
                     alt=""
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    src={currentUser?.photoURL || avatar}
                     className="size-8 rounded-full"
                   />
                 </MenuButton>

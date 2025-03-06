@@ -1,10 +1,12 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../auth/firebase";
 import { toastSuccess } from "../helpers/ToastNotify";
@@ -14,10 +16,19 @@ export const AuthContextArea = createContext();
 
 const AuthContext = ({ children }) => {
   const navigate = useNavigate();
-  const createUser = async (email, password) => {
+  const [currentUser, setCurrentUser] = useState();
+
+  useEffect(() => {
+    userObs();
+  }, []);
+
+  const createUser = async (email, password, displayName) => {
     await createUserWithEmailAndPassword(auth, email, password);
     toastSuccess("Register Success");
     navigate("/");
+    await updateProfile(auth.currentUser, {
+      displayName: displayName,
+    });
   };
   const loginUser = async (email, password) => {
     await signInWithEmailAndPassword(auth, email, password);
@@ -37,9 +48,24 @@ const AuthContext = ({ children }) => {
     toastSuccess("Logout Success");
   };
 
+  const userObs = () => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { email, displayName, photoURL } = user;
+        setCurrentUser({
+          email: email,
+          displayName: displayName,
+          photoURL: photoURL,
+        });
+      } else {
+        setCurrentUser(false);
+      }
+    });
+  };
+
   return (
     <AuthContextArea.Provider
-      value={{ createUser, loginUser, loginGoogle, logOut }}
+      value={{ createUser, loginUser, loginGoogle, logOut, currentUser }}
     >
       {children}
     </AuthContextArea.Provider>
