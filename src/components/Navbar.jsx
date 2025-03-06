@@ -5,9 +5,13 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContextArea } from "../context/AuthContext";
 
 export default function Navbar() {
+  const { logOut } = useContext(AuthContextArea);
+
   return (
     <Disclosure as="nav" className="bg-[#080705]">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -56,6 +60,7 @@ export default function Navbar() {
                   <span
                     href="#"
                     className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden cursor-pointer"
+                    onClick={() => logOut()}
                   >
                     Log out
                   </span>

@@ -4,6 +4,7 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import { auth } from "../auth/firebase";
 import { toastSuccess } from "../helpers/ToastNotify";
@@ -31,8 +32,15 @@ const AuthContext = ({ children }) => {
     navigate("/");
   };
 
+  const logOut = async () => {
+    await signOut(auth);
+    toastSuccess("Logout Success");
+  };
+
   return (
-    <AuthContextArea.Provider value={{ createUser, loginUser, loginGoogle }}>
+    <AuthContextArea.Provider
+      value={{ createUser, loginUser, loginGoogle, logOut }}
+    >
       {children}
     </AuthContextArea.Provider>
   );
