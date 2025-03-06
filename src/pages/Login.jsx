@@ -3,7 +3,7 @@ import GoogleIcon from "../assets/icons/GoogleIcon";
 import { AuthContextArea } from "../context/AuthContext";
 
 const Login = () => {
-  const { loginUser } = useContext(AuthContextArea);
+  const { loginUser, loginGoogle } = useContext(AuthContextArea);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -47,6 +47,7 @@ const Login = () => {
           <button
             type="button"
             className="btn-danger flex justify-between text-center "
+            onClick={() => loginGoogle()}
           >
             Continue with Google
             <GoogleIcon color="currentColor" />

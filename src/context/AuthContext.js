@@ -1,7 +1,9 @@
 import React, { createContext } from "react";
 import {
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   signInWithEmailAndPassword,
+  signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../auth/firebase";
 import { toastSuccess } from "../helpers/ToastNotify";
@@ -22,8 +24,15 @@ const AuthContext = ({ children }) => {
     navigate("/");
   };
 
+  const provider = new GoogleAuthProvider();
+  const loginGoogle = async () => {
+    await signInWithPopup(auth, provider);
+    toastSuccess("Login Success");
+    navigate("/");
+  };
+
   return (
-    <AuthContextArea.Provider value={{ createUser, loginUser }}>
+    <AuthContextArea.Provider value={{ createUser, loginUser, loginGoogle }}>
       {children}
     </AuthContextArea.Provider>
   );

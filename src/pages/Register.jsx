@@ -8,7 +8,7 @@ const Register = () => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
 
-  const { createUser } = useContext(AuthContextArea);
+  const { createUser, loginGoogle } = useContext(AuthContextArea);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -76,6 +76,7 @@ const Register = () => {
           <button
             type="button"
             className="btn-danger flex justify-between text-center "
+            onClick={() => loginGoogle()}
           >
             Continue with Google
             <GoogleIcon color="currentColor" />
