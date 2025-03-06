@@ -8,7 +8,7 @@
 @layer base {
   input {
     /** apply methodu ile tailwind classlarını kullanabiliyoruz */
-    @apply  block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-red-main appearance-none dark:text-white dark:border-red-main dark:focus:border-red-main focus:outline-none focus:ring-0 focus:border-red-main;
+    @apply block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-red-main appearance-none dark:text-white dark:border-red-main dark:focus:border-red-main focus:outline-none focus:ring-0 focus:border-red-main;
   }
   label {
     @apply peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-red-main peer-focus:dark:text-red-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6;
@@ -41,9 +41,10 @@ body {
 
 /* MovieCard Custom CSS */
 .movie {
-  background-color: #080f36;
-  border-radius: 3px;
-  box-shadow: 4px 4px 5px rgba(63, 60, 60, 0.5);
+  background-color: #272926;
+  border-radius: 10px;
+  border: 5px solid #5a0a09;
+  box-shadow: 5px 5px 5px #080705;
   overflow: hidden;
   margin: 1rem;
   width: 300px;
@@ -78,7 +79,6 @@ body {
 
 .tag {
   border-radius: 5px;
-  padding: 0.7rem;
   font-weight: bold;
   width: 3rem;
   text-align: center;
@@ -86,10 +86,6 @@ body {
 
 .tag.green {
   background-color: #1b5e20;
-}
-
-.tag.orange {
-  background-color: #f57f17;
 }
 
 .tag.red {
