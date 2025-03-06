@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+/** element bazında default olarak vermek istediğimiz stilleri base layer'da veriyoruz */
+@layer base {
+  input {
+    /** apply methodu ile tailwind classlarını kullanabiliyoruz */
+    @apply  block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-red-main appearance-none dark:text-white dark:border-red-main dark:focus:border-red-main focus:outline-none focus:ring-0 focus:border-red-main;
+  }
+  label {
+    @apply peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-red-main peer-focus:dark:text-red-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6;
+  }
+}
+
+/** component/class bazında default olarak vermek istediğimiz stilleri components layer'da veriyoruz */
+@layer components {
+  .btn-danger {
+    @apply focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 w-[300px] mt-[15px] dark:bg-red-main dark:hover:bg-red-700 dark:focus:ring-red-900;
+  }
+  .btn-danger-bordered {
+    @apply text-red-main hover:text-white border-2 border-red-main hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-main dark:text-red-main dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900;
+  }
+  .form-container {
+    @apply mt-[10vh] mx-auto overflow-hidden relative rounded-[8px] bg-gray-100 dark:bg-[#1c1c1c] before:content-[""] before:absolute before:w-[380px] before:h-[420px] before:top-[-50%] before:left-[-50%] after:content-[""] after:absolute after:w-[380px] after:h-[420px] after:top-[-50%] after:left-[-50%] custom-linear-gradient;
+  }
+  .form-container form {
+    @apply absolute inset-[2px] rounded-[8px] bg-gray-100 dark:bg-gray-dark-second z-[10] flex flex-col py-[50px] px-[40px];
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", "sans-serif";
+  margin: 0;
+}
+
+/* MovieCard Custom CSS */
+.movie {
+  background-color: #080f36;
+  border-radius: 3px;
+  box-shadow: 4px 4px 5px rgba(63, 60, 60, 0.5);
+  overflow: hidden;
+  margin: 1rem;
+  width: 300px;
+  height: 510px;
+  position: relative;
+  cursor: pointer;
+}
+
+.movie img {
+  object-fit: cover;
+  height: 450px;
+  max-width: 100%;
+}
+
+.movie-over {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #000;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  max-height: 100%;
+  padding: 1rem;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.movie:hover .movie-over {
+  transform: translateX(0%);
+}
+
+.tag {
+  border-radius: 5px;
+  padding: 0.7rem;
+  font-weight: bold;
+  width: 3rem;
+  text-align: center;
+}
+
+.tag.green {
+  background-color: #1b5e20;
+}
+
+.tag.orange {
+  background-color: #f57f17;
+}
+
+.tag.red {
+  background-color: #7f0000;
+}
+
+.form-image {
+  min-width: 800px;
+  min-height: 600px;
+}
+
+/* Login Custom CSS */
+
+.custom-linear-gradient::before {
+  background: linear-gradient(0deg, transparent, #ff4b45);
+  transform-origin: bottom right;
+  animation: animate 6s linear infinite;
+}
+
+.custom-linear-gradient::after {
+  background: linear-gradient(0deg, transparent, #ff4b45);
+  transform-origin: bottom right;
+  animation: animate 6s linear infinite;
+  animation-delay: -3s;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus input:-webkit-autofill {
+  -webkit-text-fill-color: white !important;
+  -webkit-box-shadow: 0 0 0px 0px #28292d inset !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
