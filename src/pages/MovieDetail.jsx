@@ -35,7 +35,7 @@ const MovieDetail = () => {
                 {"Release Date : " + detail.release_date}
               </li>
               <li className="px-6 py-2 border-b border-gray-400 w-full">
-                {`Rate :  ${detail.vote_average}`}
+                Rate : {detail.vote_average}
               </li>
               <li className="px-6 py-2 border-b border-gray-400 w-full">
                 {"Total Vote : " + detail.vote_count}

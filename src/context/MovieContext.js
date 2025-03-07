@@ -9,17 +9,17 @@ const MovieContext = ({ children }) => {
 
   const [movies, setMovies] = useState([]);
 
-  const getMovies = async () => {
-    const res = await axios.get(BASE_URL);
+  const getMovies = async (API) => {
+    const res = await axios.get(API);
     setMovies(res.data.results);
   };
 
   useEffect(() => {
-    getMovies();
+    getMovies(BASE_URL);
   }, []);
 
   return (
-    <MovieContextArea.Provider value={{ movies }}>
+    <MovieContextArea.Provider value={{ movies, getMovies }}>
       {children}
     </MovieContextArea.Provider>
   );
