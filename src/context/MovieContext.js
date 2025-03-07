@@ -24,7 +24,7 @@ const MovieContext = ({ children }) => {
 
   useEffect(() => {
     getMovies(BASE_URL);
-  }, []);
+  }, [BASE_URL]);
 
   return (
     <MovieContextArea.Provider value={{ movies, getMovies, loading }}>

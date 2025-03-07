@@ -11,7 +11,7 @@ const MovieDetail = () => {
     axios
       .get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
       .then((res) => setDetail(res.data));
-  }, []);
+  }, [API_KEY, id]);
   return (
     <div className="md:container px-10 mx-auto py-5">
       <h1 className="text-center dark:text-white text-3xl">{detail.title}</h1>
