@@ -9,7 +9,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../auth/firebase";
-import { toastSuccess } from "../helpers/ToastNotify";
+import { toastError, toastSuccess } from "../helpers/ToastNotify";
 import { useNavigate } from "react-router-dom";
 
 export const AuthContextArea = createContext();
@@ -23,24 +23,36 @@ const AuthContext = ({ children }) => {
   }, []);
 
   const createUser = async (email, password, displayName) => {
-    await createUserWithEmailAndPassword(auth, email, password);
-    toastSuccess("Register Success");
-    navigate("/");
-    await updateProfile(auth.currentUser, {
-      displayName: displayName,
-    });
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      toastSuccess("Register Success");
+      navigate("/");
+      await updateProfile(auth.currentUser, {
+        displayName: displayName,
+      });
+    } catch (error) {
+      toastError(error);
+    }
   };
   const loginUser = async (email, password) => {
-    await signInWithEmailAndPassword(auth, email, password);
-    toastSuccess("Login Success");
-    navigate("/");
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      toastSuccess("Login Success");
+      navigate("/");
+    } catch (error) {
+      toastError(error);
+    }
   };
 
   const provider = new GoogleAuthProvider();
   const loginGoogle = async () => {
-    await signInWithPopup(auth, provider);
-    toastSuccess("Login Success");
-    navigate("/");
+    try {
+      await signInWithPopup(auth, provider);
+      toastSuccess("Login Success");
+      navigate("/");
+    } catch (error) {
+      toastError(error);
+    }
   };
 
   const logOut = async () => {

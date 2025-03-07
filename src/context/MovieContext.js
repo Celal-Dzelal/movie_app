@@ -8,10 +8,18 @@ const MovieContext = ({ children }) => {
   const BASE_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
 
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getMovies = async (API) => {
-    const res = await axios.get(API);
-    setMovies(res.data.results);
+    try {
+      setLoading(true);
+      const res = await axios.get(API);
+      setMovies(res.data.results);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -19,7 +27,7 @@ const MovieContext = ({ children }) => {
   }, []);
 
   return (
-    <MovieContextArea.Provider value={{ movies, getMovies }}>
+    <MovieContextArea.Provider value={{ movies, getMovies, loading }}>
       {children}
     </MovieContextArea.Provider>
   );
