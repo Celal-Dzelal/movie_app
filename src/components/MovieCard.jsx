@@ -1,10 +1,16 @@
 import React, { useContext } from "react";
 import { AuthContextArea } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ id, title, overview, poster_path, vote_average }) => {
   const { currentUser } = useContext(AuthContextArea);
+  const navigate = useNavigate();
   return (
-    <div className="movie" id="container">
+    <div
+      className="movie"
+      id="container"
+      onClick={() => navigate("/details/" + id)}
+    >
       <img
         src={`https://image.tmdb.org/t/p/w1280${poster_path}`}
         alt="movie-card"
