@@ -1,212 +1,90 @@
-<p>Clarusway<img align="right"
-  src="https://secure.meetupstatic.com/photos/event/3/1/b/9/600_488352729.jpeg"  width="15px"></p>
+# DVS Cinema - Movie App
 
-# Project-06 : Movie App (RP-06)
+DVS Cinema is a movie application where users can view movie titles and posters. After registering, users can access movie summaries, ratings, and detailed information. Users can register either manually or via Google. Once registered, users can log in and get access to more detailed information. If users visit the site without logging in, they can only see movie titles and posters, but registered users can view summaries and ratings. Additionally, users can click on a movie to access detailed information about it.
 
-## Description
+[Visit the app here](https://movie-app-kappa-mauve.vercel.app/)
 
-Project aims to create a Movie App.
+## Features
 
-## Problem Statement
+- **User Registration and Login:**
 
-- We are adding a new project to our portfolios. So you and your colleagues have started to work on the project.
+  - Users can register manually or via Google.
+  - Logged-in users can access more content and movie details.
+  - Non-logged-in users can only view movie titles and posters.
 
-## Project Skeleton
+- **Movie Information:**
+
+  - Non-logged-in users can only see movie titles and posters.
+  - Registered and logged-in users can view the summary and rating for each movie.
+  - Clicking on a movie reveals more information such as the plot, cast, and genre.
+
+- **Movie Detail Page:**
+  - Clicking on a movie shows detailed information, including description, cast, director, genre, and release year.
+
+## Technologies and Libraries Used
+
+The following technologies and libraries are used in the DVS Cinema app:
+
+- **React:** JavaScript library for building user interfaces (UI).
+- **Firebase:** Backend service for user registration, login, and management.
+- **Axios:** Library for making API calls and fetching data.
+- **React Router:** Library for handling navigation between pages.
+- **React Toastify:** Library for displaying user notifications.
+- **TailwindCSS:** Utility-first CSS framework for styling and layout.
+
+## Features in Detail
+
+- **Registration and Login:**
+
+  - Users can register manually or through Google login. Registered users can log in to access additional content.
+  - Firebase Authentication ensures secure login and registration.
+
+- **Movie Listing:**
+
+  - On the homepage, users can see only movie titles and posters if they are not logged in.
+  - Logged-in users can also view the summary and ratings of each movie.
+
+- **Movie Detail:**
+  - When a user clicks on a movie, detailed information about that movie is displayed. This includes the plot summary, cast, director, genre, and release year.
+
+## Setup and Running Locally
+
+To run this project locally, follow these steps:
+
+1. **Clone the repository:**
 
 ```
-006 - Movie App (folder)
-|
-|----readme.md         # Given to the students (Definition of the project)
-SOLUTION
-├── public
-│     └── index.html
-├── src
-│    ├── auth
-│    │     └── firebase.js
-│    ├── components
-│    │     ├── MovieCard.js
-│    │     └── Navbar.js
-│    ├── context
-│    │     └── AuthContext.js
-│    ├── pages
-│    │     ├── Login.js
-│    │     ├── Register.js
-│    │     ├── Main.js
-│    │     └── MovieDetail.js
-│    ├── router
-│    │     └── Router.js
-│    ├── App.js
-│    ├── App.css
-│    ├── index.js
-│    └── index.css
-├── package.json
-├── .env
-└── yarn.lock
+git clone https://github.com/username/movie-app-1.git
 ```
 
-![Project Snapshot](movie-app_structure.png)
+2. **Install dependencies**
 
-## Expected Outcome
-
-![Project Snapshot](movie.gif)
-
-## Objective
-
-Build a Movie App using ReactJS.
-
-### At the end of the project, following topics are to be covered;
-
-- HTML
-
-- CSS
-
-- JS
-
-- ReactJS
-
-### At the end of the project, students will be able to;
-
-- improve coding skills within HTML & CSS & JS & ReactJS.
-
-- use git commands (push, pull, commit, add etc.) and Github as Version Control System.
-
-## Steps to Solution
-
-- Before start you can watch these tutorials:
-  - https://www.youtube.com/watch?v=9bXhf_TELP4
-  - https://www.youtube.com/watch?v=vDT7EnUpEoo
-- Step 1 : Create React App using `npx create-react-app movie-app` and install firebase `npm i firebase` / `yarn add firebase`
-
-- Step 2 : Signup `https://firebase.google.com/` and create new app in firebase.
-  Firebase is a backed application development software that enables developers to develop iOS, Android and Web apps. It provides developers with a variety of tools and services to help them develop quality apps, grow their user base, and earn profit. It is built on Google’s infrastructure. Firebase offers a number of services, including: analytics,authentication, cloud messaging, realtime database, performance and test lab. Firebase is categorized as a NoSQL database program, which stores data in JSON-like documents.
-
-![Project  Snapshot](firebase-create-app.gif)
-
-- Step 3 : Use `https://firebase.google.com/docs/auth/web/start` and create `Authentication` operations.
-  - Add the Firebase Authentication JS codes in your `firebase.js` file and initialize Firebase Authentication:
-
-```jsx
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-
-// TODO: Replace the following with your app's Firebase project configuration at project settings part
-// See: https://firebase.google.com/docs/web/learn-more#config-object
-const firebaseConfig = {
-  // ...
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-// Initialize Firebase Authentication and get a reference to the service
-const auth = getAuth(app);
+```
+npm install
 ```
 
-- Use this method to `Sign up new users` :
+3. **Start the app**
 
-```jsx
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+```
+pnpm start
 ```
 
-- Go to https://console.firebase.google.com => Authentication => sign-in-method => `enable Email/password`
-- Use this method to `Sign in existing users` :
+## Used Packages
 
-```jsx
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+- The following libraries and packages are used in this project:
 
-signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-```
+1. **@headlessui/react -** UI components, especially for interactive elements like modals and dropdowns.
+2. **@heroicons/react -** Provides customizable and stylish icons for the app.
+3. **axios -** Popular HTTP client for making API requests and fetching data.
+4. **firebase -** Cloud-based platform for user authentication and database management.
+5. **react -** JavaScript library for building user interface components.
+6. **react-dom -** Helper library for rendering React components to the DOM.
+7. **react-router-dom -** Used for navigation between pages in a React app.
+8. **react-toastify -** A library for showing notifications to the user.
+9. **tailwindcss -** Utility-first CSS framework for fast and efficient styling.
 
-- Use this method to `Set an authentication state observer and get user data` :
+### Firebase Configuration
 
-```jsx
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+- To connect to Firebase, create a Firebase project and add the necessary configuration to the firebase-config.js file. You can follow the Firebase setup guide.
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-  } else {
-    // User is signed out
-  }
-});
-```
-
-- Go to https://console.firebase.google.com => Authentication => sign-in-method => `enable Google`
-- Use this method to `Authenticate Using Google with Popup` :
-
-```jsx
-import { GoogleAuthProvider } from "firebase/auth";
-
-const provider = new GoogleAuthProvider();
-
-signInWithPopup(auth, provider)
-  .then((result) => {
-    // The signed-in user info.
-    const user = result.user;
-  })
-  .catch((error) => {
-    // Handle Errors here.
-    console.log(error);
-  });
-```
-
-- Use this method to `Sign Out` :
-
-```jsx
-import { getAuth, signOut } from "firebase/auth";
-
-signOut(auth)
-  .then(() => {
-    // Sign-out successful.
-  })
-  .catch((error) => {
-    // An error happened.
-  });
-```
-
-- Use this method to `Send a password reset email` :
-
-```jsx
-import { getAuth, sendPasswordResetEmail } from "firebase/auth";
-
-sendPasswordResetEmail(auth, email)
-  .then(() => {
-    // Password reset email sent!
-  })
-  .catch((error) => {
-    const errorMessage = error.message;
-    // ..
-  });
-```
-
-- Step 4 : Signup `https://www.themoviedb.org/documentation/api` and get API key. In order to get data use `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`, to search movies use `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=`, to get movie details use `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}` and to get video key use `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`. Use `https://image.tmdb.org/t/p/w1280${poster_path}` for image `src`.
-
-- Step 5: You can use css frameworks like Bootstrap, Semantic UI, Material UI.
-
-- Step 6: Add project gif to your project and README.md file.
-
-## Notes
-
-- You can add additional functionalities to your app.
-
-## Demo
-<a href="https://firebase-movie-app-tailwind.vercel.app/" target="_blank">Movie App</a>
-
-**<p align="center">&#9786; Happy Coding &#9997;</p>**
+#### This project is licensed under the MIT License.
