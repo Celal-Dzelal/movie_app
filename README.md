@@ -2,7 +2,9 @@
 
 DVS Cinema is a movie application where users can view movie titles and posters. After registering, users can access movie summaries, ratings, and detailed information. Users can register either manually or via Google. Once registered, users can log in and get access to more detailed information. If users visit the site without logging in, they can only see movie titles and posters, but registered users can view summaries and ratings. Additionally, users can click on a movie to access detailed information about it.
 
-[Visit the app here](https://movie-app-kappa-mauve.vercel.app/)
+## Demo
+
+![Demo GIF](./public/Demo.gif)
 
 ## Features
 
